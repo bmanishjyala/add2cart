@@ -22,6 +22,14 @@ export default function Navbar() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  let counter = 0;
+for (let i = 0; i < getData.length; i++) {
+  if (getData[i].id) counter++;
+}
+if(counter==0){
+  getData.length=0
+    }
+  console.log(counter)
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -51,7 +59,7 @@ useEffect(()=>{
           </NavLink>
         </div>
         <Badge
-          badgeContent={getData.length}
+          badgeContent={counter}
           color="primary"
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
@@ -66,41 +74,39 @@ useEffect(()=>{
           />
         </Badge>
         <div
-          class="offcanvas offcanvas-end"
-          tabindex="-1"
+          className="offcanvas offcanvas-end"
+          tabIndex="-1"
           id="offcanvasRight"
           aria-labelledby="offcanvasRightLabel"
         >
-          <div class="offcanvas-header">
+          <div className="offcanvas-header">
             <h5 id="offcanvasRightLabel">Cart</h5>
             <button
               type="button"
-              class="btn-close text-reset"
+              className="btn-close text-reset"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></button>
           </div>
-          <div class="offcanvas-body m-0 p-0">
-            {getData.length ? (
+          <div className="offcanvas-body m-0 p-0">
+            {counter ? (
               <div className="col">
-                {getData[0].id && getData.map((els) => {
-                  console.log(getData)
+                {counter && getData.map((els) => {
                   return (
-                  
                     <div key={els.id} className="border shadow mb-3">
                       <div className=" px-1">
-                        <div class="dropdown">
+                        <div className="dropdown">
                           <MoreHorizIcon
                             id="dropdownMenu2"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                           />
                           <ul
-                            class="dropdown-menu  dropdown-menu-lg-start"
+                            className="dropdown-menu  dropdown-menu-lg-start"
                             aria-labelledby="dropdownMenu2"
                           >
                             <li>
-                              <button class="dropdown-item" onClick={()=>{dlt(els.id)}} type="button">
+                              <button className="dropdown-item" onClick={()=>{dlt(els.id)}} type="button">
                                 <DeleteIcon />
                                 Remove
                               </button>
@@ -108,23 +114,18 @@ useEffect(()=>{
                           </ul>
                         </div>
                       </div>
-                      <div className=" d-flex border p-2">
+                     <div className=" d-flex border p-2">
                        <NavLink to={`/cart/${els.id}`}> <img
                           style={{height: "120px",width:"80px" }}
                           src={els.image}
                           alt=""
-                          
                           data-bs-dismiss="offcanvas"
                           aria-label="Close"/></NavLink>
                         <div className="px-2 pt-3 w-100">
                           <h6>{els.title}</h6>
-
                           <p>
-                            ₹ {(els.price*77).toFixed(2)
-                            }
+                            ₹ {els.price}
                           </p>
-
-                          
                            <div className="d-flex justify-content-end">
                            <p className="">Quantity :</p>
                             <label
@@ -137,18 +138,12 @@ useEffect(()=>{
                             <label
                               className="text-center"
                               style={{ width: "20px", border: "none" }}
-                            >  ₹{((els.price*70)*els.qtny).toFixed(2)}</label>
+                            >  ₹{(els.price*els.qtny).toFixed(2)}</label>
                            </div>
-                            
-                          
                         </div>
-                       
                       </div>
-                     
                     </div>
-                    
-                  
-                  );
+                   );
                 })}
               </div>
             ) : (

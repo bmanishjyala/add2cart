@@ -60,16 +60,16 @@ export default function CardDetail() {
                   className="d-flex prting justify-content-around"
                   style={{ height: "60px" }}
                 >
-                  <p className="fs-5 d-flex align-items-center ">
+                  <div className="fs-5 d-flex align-items-center ">
                     <h6 className=" fw-bold pt-1">Rating :</h6>
-                    <span className="mx-1 bg-success px-1  ">
+                    <span className="mx-1  px-1  ">
                       {element.rating.rate}
                     </span>
-                  </p>
-                  <p className="fs-5 d-flex align-items-center ">
+                  </div>
+                  <div className="fs-5 d-flex align-items-center ">
                     <h6 className="pt-2 mx-2 fw-bold">Price : </h6>
-                    ₹ {(element.price*77).toFixed(2)}
-                  </p>
+                    ₹ {(element.price).toFixed(2)}
+                  </div>
                 </div>
                 <div className="d-flex tqing justify-content-between align-items-center">
                   <div className="d-flex align-items-center">
@@ -106,9 +106,9 @@ export default function CardDetail() {
                       +
                     </button>
                   </div>
-                  <p className="fs-5 pt-2 d-flex align-items-center ">
-                    <h6 className="pt-2 mx-2 fw-bold">Total : </h6> {((element.price*77)*(element.qtny)).toFixed(2)}
-                  </p>
+                  <div className="fs-5 pt-2 d-flex align-items-center ">
+                    <h6 className="pt-2 mx-2 fw-bold">Total : </h6> {((element.price)*(element.qtny)).toFixed(2)}
+                  </div>
                 </div>
                 <div className="mt-5">
                 <h6>About The Product</h6>

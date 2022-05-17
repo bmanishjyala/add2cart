@@ -47,7 +47,7 @@ export default function ProductList() {
                     </p>
                     <p className="fs-5 d-flex align-items-center ">
                       <CurrencyRupeeIcon />
-                      {(datas.price*77).toFixed(2)}
+                      {(datas.price).toFixed(2)}
                     </p>
                   </div>
                 
